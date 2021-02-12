@@ -7,11 +7,11 @@
 
 
 #ifdef SERIALTOWIFI
-	#define SERVER  "YOUR_HOST_IP"
-	#define SERVER_PORT 6767
-    SerialToWifi serialToWifi(SERVER, SERVER_PORT, TIMESTAMP|NO_RECONNECT);
-    // TIMESTAMP: Displays a timestamp at the beginning of each line
-    // NO_RECONNECT: Will not try to reconnect if the host is unreachable at some point. A reset is required to restart debug outputs.	
+  #define SERVER  "YOUR_HOST_IP_ADDRESS"
+  #define SERVER_PORT 6767
+  SerialToWifi serialToWifi(SERVER, SERVER_PORT, TIMESTAMP|NO_RECONNECT);
+  // TIMESTAMP: Displays a timestamp at the beginning of each line
+  // NO_RECONNECT: Will not try to reconnect if the host is unreachable at some point. A reset is required to restart debug outputs.	
 #endif 
 
 
