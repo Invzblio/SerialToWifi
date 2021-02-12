@@ -1,5 +1,7 @@
 # SerialToWifi : OTA debugging made easy
 This library is a drop-in replacement for the Serial Arduino library that manages i/o to/from a remote console over wifi.
+Simply include the SerialToWifi.h, configure your host address and port and all the calls to the Serial library will be redirected to your host via wifi.
+The connection is initiated from your Arduino/ESP board to your host computer. This means that as long as your host's TCP port is reachable, the device will send its data over serial commands, wherever the board is on your local network or the Internet. 
 
 # Installation
 1. In the Arduino IDE, navigate to Sketch > Include Library > Manage Libraries
@@ -10,8 +12,16 @@ This library is a drop-in replacement for the Serial Arduino library that manage
 # TCP Console
 You need to install a TCP listener as a display console to manage the input/output from the library.
 We recommend using NCat from the nmap project.
+If you are running Windows, a precompiled standalone version is available here: https://github.com/cyberisltd/NcatPortable
+For other platforms, it can be downloaded from the nmap open source project: https://nmap.org/download.html
 
-# Usage
+Use this command line to have ncat listen on port 6767 on your host machine
+```
+ncat -k -l -p 6767 
+```
+
+
+# Library usage
 Add the following to your code.
 ```
 #include <SerialToWifi> // Comment this line to go back to the original Serial library behavior
