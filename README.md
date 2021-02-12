@@ -1,7 +1,8 @@
 # SerialToWifi : OTA debugging made easy
-This library is a drop-in replacement for the Serial Arduino library that manages i/o to/from a remote console over wifi.
-Simply include the SerialToWifi.h, configure your host address and port and all the calls to the Serial library will be redirected to your host via wifi.
-The connection is initiated from your Arduino/ESP board to your host computer. This means that as long as your host's TCP port is reachable, the device will send its data over serial commands, wherever the board is on your local network or the Internet. 
+This library is a drop-in replacement for the Serial Arduino library that manages i/o to/from a remote console over wifi.<br>
+Simply include the SerialToWifi.h, configure your host address and port and all the calls to the Serial library will be redirected to your host via wifi.<br>
+The connection is initiated by your Arduino/ESP board to your host computer. This means that as long as your host's TCP port is reachable, the device will send its data over standard serial commands, wherever the board is on your local network or the Internet.<br>
+To revert to the original Serial behavior, simply comment out the header file. Please read the "Options" section for potential impact of the library on performance.
 
 # Installation
 1. In the Arduino IDE, navigate to Sketch > Include Library > Manage Libraries
@@ -35,10 +36,9 @@ Add the following to your code.
 
 void setup()
 {
+    startWifi();
     Serial.begin(115200);
     Serial.println("Starting");
-    
-    
 }
 ```
 
