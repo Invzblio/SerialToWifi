@@ -10,6 +10,8 @@ Please read the "Options" section for potential impact of the library on perform
 2. The Library Manager will open.
 3. Then search for SerialToWifi using the search bar.
 4. Select the latest version and install it.
+<br>
+Example code is available in Sketch->Examples->SerialToWifi
 
 # TCP Console
 You need to install a TCP listener as a display console to manage the input/output from the library.
