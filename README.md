@@ -34,7 +34,7 @@ Add the following to your code.
     #define SERVER_PORT 6767
     SerialToWifi serialToWifi(SERVER, SERVER_PORT, TIMESTAMP|NO_RECONNECT);
     // TIMESTAMP: Displays a timestamp at the beginning of each line
-    // NO_RECONNECT: Will not try to reconnect if the host is unreachable at some point. A reset is required to restart debug outputs.
+    // NO_RECONNECT: Will not try to reconnect if the host is unreachable at some point. A board reset is required to restart debug outputs.
 #endif
 
 void setup()
@@ -48,4 +48,4 @@ void setup()
 # Options
 Options for the SerialToWifi object are:<br>
 <b>TIMESTAMP</b> : Displays a timestamp at the beginning of each line similar to the one in the Arduino console. This option is disabled by default.<br>
-<b>NO_RECONNECT</b> : By default, the library will attempt to connect to the TCP console on each call to a Serial function. If the console is not reacheable, this can add significant delays to your program's excecution. Using the NO_RECONNECT option will stop this behavior and disable the sending of information if the console is not reachable. To restart debug outputs to the TCP console, a reset of the device is required.<br>
+<b>NO_RECONNECT</b> : By default, the library will attempt to connect to the TCP console on each call to a Serial function. If the console is not reachable, this can add significant delays to your program's execution. Using the NO_RECONNECT option will stop this behavior and disable the sending of information if the console is not reachable. To restart debug outputs to the TCP console, a reset of the device is required.<br>
