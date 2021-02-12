@@ -7,3 +7,9 @@ This library is a drop-in replacement for the Serial Arduino library that output
 3. Then search for SerialToWifi using the search bar.
 4. Select the latest version and install it.
 
+# Usage
+Add the following snippet in your code.
+```
+#include <SerialToWifi>
+  
+```
