@@ -3,6 +3,7 @@ This library is a drop-in replacement for the Serial Arduino library that manage
 Simply include the SerialToWifi.h, configure your host address and port and all the calls to the Serial library will be redirected to your host via wifi. Commands like Serial.println() and Serial.readStringUntil() are all supported.<br>
 The connection is initiated by your Arduino/ESP board to your host computer. This means that as long as your host's TCP port is reachable, the device will send its data over standard Serial commands, wherever the board is on your local network or the Internet.<br>
 To revert to the original Serial behavior, simply comment out the header file. <br>
+To restart debug outputs to the TCP console after a connection loss , a reset of the device is required. See the RECONNECT option to change this behavior.<br>
 Please read the "Options" section for potential impact of the library on performance.<br>
 
 # Installation
@@ -32,9 +33,9 @@ Add the following to your code.
 #ifdef SERIALTOWIFI
     #define SERVER  "YOUR_HOST_IP"
     #define SERVER_PORT 6767
-    SerialToWifi serialToWifi(SERVER, SERVER_PORT, TIMESTAMP|NO_RECONNECT);
+    SerialToWifi serialToWifi(SERVER, SERVER_PORT, TIMESTAMP); // use TIMESTAMP | RECONNECT for both options
     // TIMESTAMP: Displays a timestamp at the beginning of each line
-    // NO_RECONNECT: Will not try to reconnect if the host is unreachable at some point. A board reset is required to restart debug outputs.
+    // RECONNECT: Will try to reconnect if the host becomes unreachable at some point and gets back online. Default behaviour is to stop output after a connection loss.
 #endif
 
 void setup()
@@ -48,4 +49,4 @@ void setup()
 # Options
 Options for the SerialToWifi object are:<br>
 <b>TIMESTAMP</b> : Displays a timestamp at the beginning of each line similar to the one in the Arduino console. This option is disabled by default.<br>
-<b>NO_RECONNECT</b> : By default, the library will attempt to connect to the TCP console on each call to a Serial function. If the console is not reachable, this can add significant delays to your program's execution. Using the NO_RECONNECT option will stop this behavior and disable the sending of information if the console is not reachable. To restart debug outputs to the TCP console, a reset of the device is required.<br>
+<b>RECONNECT</b> : By default, the library does not attempt to reconnect to the console after a failed attempt or connection loss and a reset of the device is required to resume output. The RECONNECT option will attempt reconnection on each call but can add significant delays to your program's execution. <br>
