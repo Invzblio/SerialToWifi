@@ -6,12 +6,12 @@
 #define PASSWORD "PASSWORD"
 
 #ifdef SERIALTOWIFI
-  #define SERVER  "YOUR_HOST_IP_ADDRESS"
-  #define SERVER_PORT 6767
-  SerialToWifi serialToWifi(SERVER, SERVER_PORT, TIMESTAMP|NO_RECONNECT);
-  // TIMESTAMP: Displays a timestamp at the beginning of each line
-  // NO_RECONNECT: Will not try to reconnect if the host is unreachable at some point. A reset is required to restart debug outputs.	
-#endif 
+    #define SERVER  "YOUR_HOST_IP"
+    #define SERVER_PORT 6767
+    SerialToWifi serialToWifi(SERVER, SERVER_PORT, TIMESTAMP); // use TIMESTAMP | RECONNECT for both options
+    // TIMESTAMP: Displays a timestamp at the beginning of each line
+    // RECONNECT: Will try to reconnect if the host becomes unreachable at some point and gets back online. Default behaviour is to stop output after a connection loss.
+#endif
 
 
 void startWifi()
