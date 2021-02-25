@@ -8,7 +8,7 @@
     // OPTIONS
     #define NO_OPTION       0
     #define TIMESTAMP       1
-    #define NO_RECONNECT   2
+    #define RECONNECT       2
 
     class SerialToWifi : public Stream
     {
