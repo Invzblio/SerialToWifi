@@ -10,7 +10,7 @@ SerialToWifi::SerialToWifi(const char *server, int server_port, int options)
     m_connected = false;
     m_show_timestamp = true;
     m_timestamp_enabled = (options & TIMESTAMP);
-    m_reconnect = !(options & NO_RECONNECT);
+    m_reconnect = (options & RECONNECT);
 }
 
 // private method
