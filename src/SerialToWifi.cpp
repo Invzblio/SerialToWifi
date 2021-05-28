@@ -13,13 +13,27 @@ SerialToWifi::SerialToWifi(const char *server, int server_port, int options)
     m_reconnect = (options & RECONNECT);
 }
 
-// private method
+
+// private methods
+void SerialToWifi::updateTime()
+{
+    long secsSinceBoot;
+
+    secsSinceBoot = millis() / 1000;
+    m_hours = secsSinceBoot / 3600;
+    secsSinceBoot -= (m_hours * 3600);
+    m_minutes = secsSinceBoot / 60;
+    secsSinceBoot -= (m_minutes * 60);
+    m_secs = secsSinceBoot;
+}
+
 void SerialToWifi::showTimeStamp()
 {
     if (m_timestamp_enabled && m_show_timestamp)
     {
         char timeStamp[20];
-        sprintf(timeStamp, "%02d:%02d:%02d     ", hour(), minute(), second());
+        updateTime();
+        sprintf(timeStamp, "%03d:%02d:%02d     ", m_hours, m_minutes, m_secs);
         client.write(timeStamp, strlen(timeStamp));
         m_show_timestamp = false;
     }
