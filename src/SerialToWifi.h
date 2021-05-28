@@ -3,7 +3,7 @@
     
     #include <Arduino.h>
     #include <WiFi.h>
-    #include <TimeLib.h>
+   
 
     // OPTIONS
     #define NO_OPTION       0
@@ -20,6 +20,8 @@
             bool m_timestamp_enabled;
             bool m_reconnect;
 
+            int m_hours, m_minutes, m_secs;
+            void updateTime();
             void showTimeStamp();
             int isConnected();
 
