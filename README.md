@@ -38,6 +38,19 @@ Add the following to your code.
     // RECONNECT: Will try to reconnect if the host becomes unreachable at some point and gets back online. Default behaviour is to stop output after a connection loss.
 #endif
 
+void startWifi()
+{
+  // launch WiFi
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(SSID, PASSWORD);
+  if (WiFi.waitForConnectResult() != WL_CONNECTED)
+  {
+    //Connection Failed! Stop ...
+    while (1)
+      delay(1000);
+  }
+}
+
 void setup()
 {
     startWifi();
